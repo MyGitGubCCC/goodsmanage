@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzit.mapper.AccessMapper" >
+  <resultMap id="BaseResultMap" type="com.xzit.entity.Access" >
+    <id column="accessid" property="accessid" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="goodsid" property="goodsid" jdbcType="INTEGER" />
+    <result column="inorout" property="inorout" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <!--级联查询加的属性-->
+    <association property="goods"
+                 javaType="com.xzit.entity.Goods"
+                 select="com.xzit.mapper.GoodsMapper.selectByPrimaryKey"
+                 column="goodsid"
+                 fetchType="eager"></association>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    accessid, time, goodsid, inorout, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xzit.entity.AccessExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from access
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from access
+    where accessid = #{accessid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from access
+    where accessid = #{accessid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xzit.entity.AccessExample" >
+    delete from access
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xzit.entity.Access" >
+    insert into access (accessid, time, goodsid, 
+      inorout, remark)
+    values (#{accessid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, #{goodsid,jdbcType=INTEGER}, 
+      #{inorout,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzit.entity.Access" >
+    insert into access
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accessid != null" >
+        accessid,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="goodsid != null" >
+        goodsid,
+      </if>
+      <if test="inorout != null" >
+        inorout,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accessid != null" >
+        #{accessid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="inorout != null" >
+        #{inorout,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xzit.entity.AccessExample" resultType="java.lang.Integer" >
+    select count(*) from access
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update access
+    <set >
+      <if test="record.accessid != null" >
+        accessid = #{record.accessid,jdbcType=INTEGER},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.goodsid != null" >
+        goodsid = #{record.goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="record.inorout != null" >
+        inorout = #{record.inorout,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update access
+    set accessid = #{record.accessid,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=TIMESTAMP},
+      goodsid = #{record.goodsid,jdbcType=INTEGER},
+      inorout = #{record.inorout,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzit.entity.Access" >
+    update access
+    <set >
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsid != null" >
+        goodsid = #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="inorout != null" >
+        inorout = #{inorout,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where accessid = #{accessid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzit.entity.Access" >
+    update access
+    set time = #{time,jdbcType=TIMESTAMP},
+      goodsid = #{goodsid,jdbcType=INTEGER},
+      inorout = #{inorout,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where accessid = #{accessid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAccessid" resultMap="BaseResultMap" >
+    select access.accessid
+    from access,goods,student,building,dormitory
+    where access.goodsid = goods.goodsid
+    and goods.sid = student.sid
+    and student.buildingid = building.buildingid
+    and student.dormitoryid = dormitory.dormitoryid
+    <if test="sno != null and sno !=''" >
+      and (student.sno = #{sno} or student.cardno = #{sno})
+    </if>
+    <if test="sname != null and sname !=''" >
+      and student.sname like  "%"#{sname}"%"
+    </if>
+    <if test="buildingid != null and buildingid !=0" >
+    and student.buildingid = #{buildingid}
+    </if>
+    <if test="dormitoryid != null and dormitoryid !=0" >
+      and student.dormitoryid = #{dormitoryid}
+    </if>
+    <if test="goodsname != null and goodsname !=''" >
+      and goods.goodsname like "%"#{goodsname}"%"
+    </if>
+    <if test="starttime != null and starttime !=''" >
+      and access.time >= #{starttime}
+    </if>
+    <if test="endtime != null and endtime !=''" >
+      and access.time &lt;= #{endtime}
+    </if>
+    <if test="inorout == 0 or inorout ==1" >
+      and access.inorout = #{inorout}
+    </if>
+  </select>
+
+  <delete id="delAccessByAccessid" parameterType="java.lang.Integer" >
+    delete from access
+    where accessid IN
+      <foreach collection="list" item="listItem" open="(" close=")" separator="," >
+        #{listItem}
+      </foreach>
+  </delete>
+</mapper>

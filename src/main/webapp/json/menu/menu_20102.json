@@ -1,0 +1,24 @@
+[
+  {
+    "id": 2010201,
+    "pid": 20102,
+    "state": "open",
+    "iconCls": "",
+    "text": "物品外出管理",
+    "url": "goodsout.action"
+  },{
+  "id": 2010202,
+  "pid": 20102,
+  "state": "open",
+  "iconCls": "",
+  "text": "物品进入管理",
+  "url": "goodsin.action"
+},{
+  "id": 2010203,
+  "pid": 20102,
+  "state": "open",
+  "iconCls": "",
+  "text": "物品出入查询",
+  "url": "accessin.action"
+}
+]

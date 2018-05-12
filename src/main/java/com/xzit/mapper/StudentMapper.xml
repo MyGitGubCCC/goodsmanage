@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzit.mapper.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.xzit.entity.Student" >
+    <id column="sid" property="sid" jdbcType="INTEGER" />
+    <result column="cardno" property="cardno" jdbcType="VARCHAR" />
+    <result column="sno" property="sno" jdbcType="VARCHAR" />
+    <result column="spwd" property="spwd" jdbcType="VARCHAR" />
+    <result column="sname" property="sname" jdbcType="VARCHAR" />
+    <result column="ssex" property="ssex" jdbcType="VARCHAR" />
+    <result column="sphoneNo" property="sphoneno" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="homeAdress" property="homeadress" jdbcType="VARCHAR" />
+    <result column="classid" property="classid" jdbcType="INTEGER" />
+    <result column="dormitoryid" property="dormitoryid" jdbcType="INTEGER" />
+    <result column="buildingid" property="buildingid" jdbcType="INTEGER" />
+    <result column="bedno" property="bedno" jdbcType="INTEGER" />
+    <association property="classinfo"
+                 javaType="com.xzit.entity.Classinfo"
+                 select="com.xzit.mapper.ClassinfoMapper.selectByPrimaryKey"
+                 column="classid"
+                 fetchType="eager"></association>
+    <association property="dormitory"
+                 javaType="com.xzit.entity.Dormitory"
+                 select="com.xzit.mapper.DormitoryMapper.selectByPrimaryKey"
+                 column="dormitoryid"
+                 fetchType="eager"></association>
+    <association property="building"
+                 javaType="com.xzit.entity.Building"
+                 select="com.xzit.mapper.BuildingMapper.selectByPrimaryKey"
+                 column="buildingid"
+                 fetchType="eager"></association>
+
+    <!--<collection property="goods"
+                javaType="com.xzit.entity.Goods"
+                select="com.xzit.mapper.GoodsMapper.selectBySid"
+                column="sid"
+                ></collection>-->
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sid, cardno, sno, spwd, sname, ssex, sphoneNo, qq, homeAdress, classid, dormitoryid, 
+    buildingid, bedno
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xzit.entity.StudentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from student
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from student
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xzit.entity.StudentExample" >
+    delete from student
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xzit.entity.Student" >
+    insert into student (sid, cardno, sno, 
+      spwd, sname, ssex, 
+      sphoneNo, qq, homeAdress, 
+      classid, dormitoryid, buildingid, 
+      bedno)
+    values (#{sid,jdbcType=INTEGER}, #{cardno,jdbcType=VARCHAR}, #{sno,jdbcType=VARCHAR}, 
+      #{spwd,jdbcType=VARCHAR}, #{sname,jdbcType=VARCHAR}, #{ssex,jdbcType=VARCHAR}, 
+      #{sphoneno,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{homeadress,jdbcType=VARCHAR}, 
+      #{classid,jdbcType=INTEGER}, #{dormitoryid,jdbcType=INTEGER}, #{buildingid,jdbcType=INTEGER}, 
+      #{bedno,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzit.entity.Student" >
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="cardno != null" >
+        cardno,
+      </if>
+      <if test="sno != null" >
+        sno,
+      </if>
+      <if test="spwd != null" >
+        spwd,
+      </if>
+      <if test="sname != null" >
+        sname,
+      </if>
+      <if test="ssex != null" >
+        ssex,
+      </if>
+      <if test="sphoneno != null" >
+        sphoneNo,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="homeadress != null" >
+        homeAdress,
+      </if>
+      <if test="classid != null" >
+        classid,
+      </if>
+      <if test="dormitoryid != null" >
+        dormitoryid,
+      </if>
+      <if test="buildingid != null" >
+        buildingid,
+      </if>
+      <if test="bedno != null" >
+        bedno,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="cardno != null" >
+        #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="sno != null" >
+        #{sno,jdbcType=VARCHAR},
+      </if>
+      <if test="spwd != null" >
+        #{spwd,jdbcType=VARCHAR},
+      </if>
+      <if test="sname != null" >
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="ssex != null" >
+        #{ssex,jdbcType=VARCHAR},
+      </if>
+      <if test="sphoneno != null" >
+        #{sphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="homeadress != null" >
+        #{homeadress,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null" >
+        #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="dormitoryid != null" >
+        #{dormitoryid,jdbcType=INTEGER},
+      </if>
+      <if test="buildingid != null" >
+        #{buildingid,jdbcType=INTEGER},
+      </if>
+      <if test="bedno != null" >
+        #{bedno,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xzit.entity.StudentExample" resultType="java.lang.Integer" >
+    select count(*) from student
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update student
+    <set >
+      <if test="record.sid != null" >
+        sid = #{record.sid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cardno != null" >
+        cardno = #{record.cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sno != null" >
+        sno = #{record.sno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spwd != null" >
+        spwd = #{record.spwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sname != null" >
+        sname = #{record.sname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ssex != null" >
+        ssex = #{record.ssex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sphoneno != null" >
+        sphoneNo = #{record.sphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.homeadress != null" >
+        homeAdress = #{record.homeadress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classid != null" >
+        classid = #{record.classid,jdbcType=INTEGER},
+      </if>
+      <if test="record.dormitoryid != null" >
+        dormitoryid = #{record.dormitoryid,jdbcType=INTEGER},
+      </if>
+      <if test="record.buildingid != null" >
+        buildingid = #{record.buildingid,jdbcType=INTEGER},
+      </if>
+      <if test="record.bedno != null" >
+        bedno = #{record.bedno,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update student
+    set sid = #{record.sid,jdbcType=INTEGER},
+      cardno = #{record.cardno,jdbcType=VARCHAR},
+      sno = #{record.sno,jdbcType=VARCHAR},
+      spwd = #{record.spwd,jdbcType=VARCHAR},
+      sname = #{record.sname,jdbcType=VARCHAR},
+      ssex = #{record.ssex,jdbcType=VARCHAR},
+      sphoneNo = #{record.sphoneno,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      homeAdress = #{record.homeadress,jdbcType=VARCHAR},
+      classid = #{record.classid,jdbcType=INTEGER},
+      dormitoryid = #{record.dormitoryid,jdbcType=INTEGER},
+      buildingid = #{record.buildingid,jdbcType=INTEGER},
+      bedno = #{record.bedno,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzit.entity.Student" >
+    update student
+    <set >
+      <if test="cardno != null" >
+        cardno = #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="sno != null" >
+        sno = #{sno,jdbcType=VARCHAR},
+      </if>
+      <if test="spwd != null" >
+        spwd = #{spwd,jdbcType=VARCHAR},
+      </if>
+      <if test="sname != null" >
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="ssex != null" >
+        ssex = #{ssex,jdbcType=VARCHAR},
+      </if>
+      <if test="sphoneno != null" >
+        sphoneNo = #{sphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="homeadress != null" >
+        homeAdress = #{homeadress,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null" >
+        classid = #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="dormitoryid != null" >
+        dormitoryid = #{dormitoryid,jdbcType=INTEGER},
+      </if>
+      <if test="buildingid != null" >
+        buildingid = #{buildingid,jdbcType=INTEGER},
+      </if>
+      <if test="bedno != null" >
+        bedno = #{bedno,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzit.entity.Student" >
+    update student
+    set cardno = #{cardno,jdbcType=VARCHAR},
+      sno = #{sno,jdbcType=VARCHAR},
+      spwd = #{spwd,jdbcType=VARCHAR},
+      sname = #{sname,jdbcType=VARCHAR},
+      ssex = #{ssex,jdbcType=VARCHAR},
+      sphoneNo = #{sphoneno,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      homeAdress = #{homeadress,jdbcType=VARCHAR},
+      classid = #{classid,jdbcType=INTEGER},
+      dormitoryid = #{dormitoryid,jdbcType=INTEGER},
+      buildingid = #{buildingid,jdbcType=INTEGER},
+      bedno = #{bedno,jdbcType=INTEGER}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <select id="selectBySno" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from student
+    <if test="_parameter !=null and _parameter!=''">
+      where (sno = #{sno} or cardno = #{sno})
+    </if>
+  </select>
+  <update id="updateSpwdBySno" parameterType="com.xzit.entity.Student" >
+    update student
+    set
+    spwd = #{spwd,jdbcType=VARCHAR}
+    where sno = #{sno,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,17 @@
+[
+  {
+    "id": 2010301,
+    "pid": 20103,
+    "state": "open",
+    "iconCls": "",
+    "text": "校园卡信息录入",
+    "url": "cardnoentry.action"
+  },{
+  "id": 2010302,
+  "pid": 20103,
+  "state": "open",
+  "iconCls": "",
+  "text": "贵重物品信息录入",
+  "url": "goodsentry.action"
+}
+]

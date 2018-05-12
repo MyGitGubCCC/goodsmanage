@@ -1,0 +1,17 @@
+[
+  {
+    "id": 2010101,
+    "pid": 20101,
+    "state": "open",
+    "iconCls": "",
+    "text": "学生信息",
+    "url": "student.action"
+  },{
+  "id": 2010102,
+  "pid": 20101,
+  "state": "open",
+  "iconCls": "",
+  "text": "阿姨信息",
+  "url": "aunt.action"
+}
+]

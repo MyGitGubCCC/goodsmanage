@@ -1,0 +1,18 @@
+[
+  {
+    "id": 2010401,
+    "pid": 20104,
+    "state": "open",
+    "iconCls": "",
+    "text": "离校签到签退",
+    "url": "leaveschool.action"
+  },
+  {
+    "id": 2010402,
+    "pid": 20104,
+    "state": "open",
+    "iconCls": "",
+    "text": "离校信息查看",
+    "url": "lookleaveschool.action"
+  }
+]

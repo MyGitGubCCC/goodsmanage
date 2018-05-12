@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzit.mapper.AcademyMapper" >
+  <resultMap id="BaseResultMap" type="com.xzit.entity.Academy" >
+    <id column="academyid" property="academyid" jdbcType="INTEGER" />
+    <result column="academyname" property="academyname" jdbcType="VARCHAR" />
+    <result column="campusid" property="campusid" jdbcType="INTEGER" />
+    <association property="campus"
+                 javaType="com.xzit.entity.Campus"
+                 select="com.xzit.mapper.CampusMapper.selectByPrimaryKey"
+                 column="campusid"
+                 fetchType="eager"></association>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    academyid, academyname, campusid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xzit.entity.AcademyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from academy
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from academy
+    where academyid = #{academyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from academy
+    where academyid = #{academyid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xzit.entity.AcademyExample" >
+    delete from academy
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xzit.entity.Academy" >
+    insert into academy (academyid, academyname, campusid
+      )
+    values (#{academyid,jdbcType=INTEGER}, #{academyname,jdbcType=VARCHAR}, #{campusid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzit.entity.Academy" >
+    insert into academy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="academyid != null" >
+        academyid,
+      </if>
+      <if test="academyname != null" >
+        academyname,
+      </if>
+      <if test="campusid != null" >
+        campusid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="academyid != null" >
+        #{academyid,jdbcType=INTEGER},
+      </if>
+      <if test="academyname != null" >
+        #{academyname,jdbcType=VARCHAR},
+      </if>
+      <if test="campusid != null" >
+        #{campusid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xzit.entity.AcademyExample" resultType="java.lang.Integer" >
+    select count(*) from academy
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update academy
+    <set >
+      <if test="record.academyid != null" >
+        academyid = #{record.academyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.academyname != null" >
+        academyname = #{record.academyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.campusid != null" >
+        campusid = #{record.campusid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update academy
+    set academyid = #{record.academyid,jdbcType=INTEGER},
+      academyname = #{record.academyname,jdbcType=VARCHAR},
+      campusid = #{record.campusid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzit.entity.Academy" >
+    update academy
+    <set >
+      <if test="academyname != null" >
+        academyname = #{academyname,jdbcType=VARCHAR},
+      </if>
+      <if test="campusid != null" >
+        campusid = #{campusid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where academyid = #{academyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzit.entity.Academy" >
+    update academy
+    set academyname = #{academyname,jdbcType=VARCHAR},
+      campusid = #{campusid,jdbcType=INTEGER}
+    where academyid = #{academyid,jdbcType=INTEGER}
+  </update>
+</mapper>

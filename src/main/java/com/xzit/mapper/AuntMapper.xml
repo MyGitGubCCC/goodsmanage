@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzit.mapper.AuntMapper" >
+  <resultMap id="BaseResultMap" type="com.xzit.entity.Aunt" >
+    <id column="auntid" property="auntid" jdbcType="INTEGER" />
+    <result column="auntname" property="auntname" jdbcType="VARCHAR" />
+    <result column="auntno" property="auntno" jdbcType="VARCHAR" />
+    <result column="auntpassword" property="auntpassword" jdbcType="VARCHAR" />
+    <result column="auntphoneNo" property="auntphoneno" jdbcType="VARCHAR" />
+    <result column="buildingid" property="buildingid" jdbcType="INTEGER" />
+    <association property="building"
+                 javaType="com.xzit.entity.Building"
+                 select="com.xzit.mapper.BuildingMapper.selectByPrimaryKey"
+                 column="buildingid"
+                 fetchType="eager"></association>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    auntid, auntname, auntno, auntpassword, auntphoneNo, buildingid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xzit.entity.AuntExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from aunt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from aunt
+    where auntid = #{auntid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from aunt
+    where auntid = #{auntid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xzit.entity.AuntExample" >
+    delete from aunt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xzit.entity.Aunt" >
+    insert into aunt (auntid, auntname, auntno, 
+      auntpassword, auntphoneNo, buildingid
+      )
+    values (#{auntid,jdbcType=INTEGER}, #{auntname,jdbcType=VARCHAR}, #{auntno,jdbcType=VARCHAR}, 
+      #{auntpassword,jdbcType=VARCHAR}, #{auntphoneno,jdbcType=VARCHAR}, #{buildingid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzit.entity.Aunt" >
+    insert into aunt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="auntid != null" >
+        auntid,
+      </if>
+      <if test="auntname != null" >
+        auntname,
+      </if>
+      <if test="auntno != null" >
+        auntno,
+      </if>
+      <if test="auntpassword != null" >
+        auntpassword,
+      </if>
+      <if test="auntphoneno != null" >
+        auntphoneNo,
+      </if>
+      <if test="buildingid != null" >
+        buildingid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="auntid != null" >
+        #{auntid,jdbcType=INTEGER},
+      </if>
+      <if test="auntname != null" >
+        #{auntname,jdbcType=VARCHAR},
+      </if>
+      <if test="auntno != null" >
+        #{auntno,jdbcType=VARCHAR},
+      </if>
+      <if test="auntpassword != null" >
+        #{auntpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="auntphoneno != null" >
+        #{auntphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingid != null" >
+        #{buildingid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xzit.entity.AuntExample" resultType="java.lang.Integer" >
+    select count(*) from aunt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update aunt
+    <set >
+      <if test="record.auntid != null" >
+        auntid = #{record.auntid,jdbcType=INTEGER},
+      </if>
+      <if test="record.auntname != null" >
+        auntname = #{record.auntname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.auntno != null" >
+        auntno = #{record.auntno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.auntpassword != null" >
+        auntpassword = #{record.auntpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.auntphoneno != null" >
+        auntphoneNo = #{record.auntphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buildingid != null" >
+        buildingid = #{record.buildingid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update aunt
+    set auntid = #{record.auntid,jdbcType=INTEGER},
+      auntname = #{record.auntname,jdbcType=VARCHAR},
+      auntno = #{record.auntno,jdbcType=VARCHAR},
+      auntpassword = #{record.auntpassword,jdbcType=VARCHAR},
+      auntphoneNo = #{record.auntphoneno,jdbcType=VARCHAR},
+      buildingid = #{record.buildingid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzit.entity.Aunt" >
+    update aunt
+    <set >
+      <if test="auntname != null" >
+        auntname = #{auntname,jdbcType=VARCHAR},
+      </if>
+      <if test="auntno != null" >
+        auntno = #{auntno,jdbcType=VARCHAR},
+      </if>
+      <if test="auntpassword != null" >
+        auntpassword = #{auntpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="auntphoneno != null" >
+        auntphoneNo = #{auntphoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingid != null" >
+        buildingid = #{buildingid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where auntid = #{auntid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzit.entity.Aunt" >
+  update aunt
+  set auntname = #{auntname,jdbcType=VARCHAR},
+  auntno = #{auntno,jdbcType=VARCHAR},
+  auntpassword = #{auntpassword,jdbcType=VARCHAR},
+  auntphoneNo = #{auntphoneno,jdbcType=VARCHAR},
+  buildingid = #{buildingid,jdbcType=INTEGER}
+  where auntid = #{auntid,jdbcType=INTEGER}
+</update>
+  <update id="updateAuntpasswordByAuntno" parameterType="com.xzit.entity.Aunt" >
+    update aunt
+    set auntpassword = #{auntpassword,jdbcType=VARCHAR}
+    where auntno = #{auntno,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAuntByAuntno" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from aunt
+    where auntno = #{auntno,jdbcType=VARCHAR}
+  </select>
+</mapper>
