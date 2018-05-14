@@ -24,7 +24,7 @@
 <div region="center" fit="true" title="学生信息展示" >
     <div id="tb">
         <%--以下table为查询条件--%>
-        <table>
+        <table id="searchTable">
             <tr>
                 <td>学号：</td>
                 <td><input class="easyui-textbox" prompt="模糊查询..." name="sno" id="sno" style="width:150px;"/></td>

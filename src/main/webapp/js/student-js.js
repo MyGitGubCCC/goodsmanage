@@ -5,18 +5,7 @@ $(function (){
     });
     //清除查询框内容
     $("#delbtn").click(function(){
-        $("#sno").textbox('setValue','');
-        $("#cardno").textbox('setValue','');
-        $("#sname").textbox('setValue','');
-        $("#ssex").textbox('setValue','');
-        $("#sphoneno").textbox('setValue','');
-        $("#homeadress").textbox('setValue','');
-        $("#campusid").textbox('setValue','');
-        $("#academyid").textbox('setValue','');
-        $("#classid").textbox('setValue','');
-        $("#buildingid").textbox('setValue','');
-        $("#dormitoryid").textbox('setValue','');
-        $("#bedno").textbox('setValue','');
+        $("#searchTable").form("clear");
     });
 
     //输入框回车事件
@@ -52,6 +41,9 @@ $(function (){
             },
             {
                 field:'sno',title:'学号', halign:'center',width:140,
+            },
+            {
+                field:'cardno',title:'卡号', halign:'center',width:140,
             },
             {
                 field:'ssex',title:'性别', halign:'center',width:50,
