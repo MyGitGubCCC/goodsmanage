@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +36,10 @@ public class GoodsController {
 
     @RequestMapping(value = "selectGoodsBySno.action")
     @ResponseBody
-    public DataGrid<Goods> selectGoodsBySno(String sno,Integer page, Integer rows)throws Exception{
+    public DataGrid<Goods> selectGoodsBySno(String sno, Integer page, Integer rows, HttpSession session)throws Exception{
+        if (session.getAttribute("role")=="学生"){
+            sno = (String) session.getAttribute("number");
+        }
         PageInfo<Goods> pageInfo = goodsService.selectBySno(sno,page,rows);
         DataGrid<Goods> dataGrid = new DataGrid<Goods>();
         dataGrid.setRows(pageInfo.getList());
@@ -69,7 +73,7 @@ public class GoodsController {
             if (state==0) msg = "更新失败！请查看编号是否重复";
             else msg="更新成功";
         }else {
-            if (student.getSid()!=null){
+            if (student!=null){
                 goods.setSid(student.getSid());
                 //保存图片
                 if(file.getOriginalFilename()!=null&&file.getOriginalFilename()!="") {

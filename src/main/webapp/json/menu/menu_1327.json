@@ -1,5 +1,12 @@
 [
-{
+  {
+    "id": 20106,
+    "pid": 1327,
+    "text": "信息录入",
+    "state": "closed",
+    "iconCls": "fa fa-heartbeat",
+    "url": ""
+  },{
   "id": 20105,
   "pid": 1327,
   "text": "个人信息",

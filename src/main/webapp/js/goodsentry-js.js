@@ -63,6 +63,20 @@ $(function (){
         }else  $.messager.alert("提示", "请选择要查看的行！", "info");
     });
 
+    $("#addPictureBtn").click(function(){
+        var row = $('#goodsData').datagrid('getSelected');
+        if (row){
+            if (row.pictureurl==null || row.pictureurl ==""){
+                $('#dlg').dialog('open').dialog('setTitle','上传图片');
+                $("#Img").attr('src',"/upload/img/noPicture.jpg");
+                $('#fm').form('load',{"goodsid":row.goodsid,
+                    "sno":row.student.sno,
+                    "goodsname":row.goodsname,
+                    "goodscolor":row.goodscolor});
+            }else $.messager.alert("提示", "图片已经上传,并且不允许修改！", "info");
+        } else $.messager.alert("提示", "请选择要的行！", "info");
+    });
+
     $("#delbtn").click(function(){
         //返回选中多行
         var selRow = $('#goodsData').datagrid('getSelections');
@@ -159,14 +173,21 @@ $(function (){
             },
             {
                 field:'goodscolor',title:'颜色', halign:'center',width:100,
-            }/*,
+            },
             {
-                field:"action",title:"操作", halign:'center',align:'center',width:160,
+                field:"action",title:"图片", halign:'center',align:'center',width:80,
                 formatter:function(value,row,index){
-                    var e = '<a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick="lookPicture(\''+ index +'\')">查看图片</a>';
-                    return e;
+                    if (row.pictureurl!=null && row.pictureurl!=""){
+                        return "已上传";
+                    }else return "待上传";
+                },styler: function(value,row,index){
+                if (row.pictureurl==null || row.pictureurl==""){
+                    return 'background-color:#ffee00;color:red;';
+                    // the function can return predefined css class and inline style
+                    // return {class:'c1',style:'color:red'}
                 }
-            }*/
+            }
+            }
         ]]
     });
     $.parser.parse();

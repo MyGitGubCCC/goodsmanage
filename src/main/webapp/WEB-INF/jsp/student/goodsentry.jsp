@@ -23,16 +23,16 @@
 <body class="easyui-layout">
 <div region="center" fit="true" title="贵重物品信息录入" >
     <div id="tb">
-        学号或卡号：<input class="easyui-textbox" name="snoSearch" id="snoSearch" style="width:150px;"/>
-        <%--姓名：<input class="easyui-textbox" name="sno" id="sno" style="width:150px;height:32px"/>
-        楼号：<input class="easyui-textbox" name="sno" id="sno" style="width:150px;height:32px"/>
-        宿舍号：<input class="easyui-textbox" name="sno" id="sno" style="width:150px;height:32px"/>
-        物品名称：<input class="easyui-textbox" name="goodsname" id="goodsname" style="width:150px;height:32px"/>--%>
-        <a href="#" id="findbtn" class="easyui-linkbutton" plain="true" data-options="iconCls:'icon-search'" style="width:80px">查询</a>
-        <a href="#" id="clearbtn" class="easyui-linkbutton" plain="true" iconCls="icon-cancel" style="width:80px">清除</a>
-        <a href="#" id="addbtn" class="easyui-linkbutton" plain="true" iconCls="icon-add" style="width:80px">添加</a>
+        <c:set value="${role}" var="role" property=""/>
+        <c:if test="${role != '学生'}">
+            学号或卡号：<input class="easyui-textbox" name="snoSearch" id="snoSearch" style="width:150px;"/>
+            <a href="#" id="findbtn" class="easyui-linkbutton" plain="true" data-options="iconCls:'icon-search'" style="width:80px">查询</a>
+            <a href="#" id="clearbtn" class="easyui-linkbutton" plain="true" iconCls="icon-cancel" style="width:80px">清除</a>
+            <a href="#" id="addbtn" class="easyui-linkbutton" plain="true" iconCls="icon-add" style="width:80px">添加</a>
+            <a href="#" id="delbtn" class="easyui-linkbutton" plain="true" iconCls="icon-remove" style="width:80px">删除</a>
+        </c:if>
         <a href="#" id="editbtn" class="easyui-linkbutton" plain="true" iconCls="icon-search" style="width:100px">查看图片</a>
-        <a href="#" id="delbtn" class="easyui-linkbutton" plain="true" iconCls="icon-remove" style="width:80px">删除</a>
+        <a href="#" id="addPictureBtn" class="easyui-linkbutton" plain="true" iconCls="icon-add" style="width:100px">上传图片</a>
     </div>
     <%--<br>
     姓名：&emsp;&emsp;&emsp;<input class="easyui-textbox" name="sname" id="sname" style="width:150px;height:32px"/>

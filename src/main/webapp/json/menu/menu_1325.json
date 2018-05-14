@@ -6,22 +6,21 @@
     "state": "closed",
     "iconCls": "fa fa-heartbeat",
     "url": ""
-  },
-  {
+  },{
     "id": 20102,
+    "pid": 1325,
+    "text": "信息录入",
+    "state": "closed",
+    "iconCls": "fa fa-heartbeat",
+    "url": ""
+  },{
+    "id": 20103,
     "pid": 1325,
     "text": "物品出入管理",
     "state": "closed",
     "iconCls": "fa fa-heartbeat",
     "url": ""
   },{
-  "id": 20103,
-  "pid": 1325,
-  "text": "信息录入",
-  "state": "closed",
-  "iconCls": "fa fa-heartbeat",
-  "url": ""
-},{
   "id": 20104,
   "pid": 1325,
   "text": "离校管理",

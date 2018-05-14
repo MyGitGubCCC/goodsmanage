@@ -4,21 +4,14 @@
     "pid": 20102,
     "state": "open",
     "iconCls": "",
-    "text": "物品外出管理",
-    "url": "goodsout.action"
+    "text": "校园卡信息录入",
+    "url": "cardnoentry.action"
   },{
   "id": 2010202,
   "pid": 20102,
   "state": "open",
   "iconCls": "",
-  "text": "物品进入管理",
-  "url": "goodsin.action"
-},{
-  "id": 2010203,
-  "pid": 20102,
-  "state": "open",
-  "iconCls": "",
-  "text": "物品出入查询",
-  "url": "accessin.action"
+  "text": "贵重物品信息录入",
+  "url": "goodsentry.action"
 }
 ]
