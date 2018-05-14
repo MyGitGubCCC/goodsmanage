@@ -26,7 +26,7 @@
         <table id="searchTable">
             <tr>
                 <td>学号或卡号：</td>
-                <td><input class="easyui-textbox" name="sno" id="sno" style="width:150px;height:32px"/></td>
+                <td><input class="easyui-textbox" name="sno" id="sno" style="width:150px"/></td>
                 <td>楼号：</td>
                 <td><input class="easyui-combobox" name="buildingid" id="buildingid"style="width:150px;"
                            data-options="
@@ -48,7 +48,7 @@
             </tr>
             <tr>
             <td>姓名：</td>
-            <td><input class="easyui-textbox" name="sname" id="sname" prompt="模糊查询..." style="width:150px;height:32px"/></td>
+            <td><input class="easyui-textbox" name="sname" id="sname" prompt="模糊查询..." style="width:150px;"/></td>
             <td>离校开始时间：</td>
             <td><input class="easyui-datetimebox" name="leavestarttime" id="leavestarttime"  style="width:150px"></td>
             <td>离校结束时间：</td>
@@ -56,7 +56,7 @@
         </tr>
             <tr>
                 <td>家庭住址：</td>
-                <td><input class="easyui-textbox" name="homeadress" id="homeadress" prompt="模糊查询..." style="width:150px;height:32px"/></td>
+                <td><input class="easyui-textbox" name="homeadress" id="homeadress" prompt="模糊查询..." style="width:150px;"/></td>
                 <td>返校开始时间：</td>
                 <td><input class="easyui-datetimebox" name="backstarttime" id="backstarttime"  style="width:150px"></td>
                 <td>返校结束时间：</td>

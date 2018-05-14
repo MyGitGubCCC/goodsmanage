@@ -9,7 +9,7 @@
     <meta name="renderer" content="webkit">
     <meta name="keywords" content='easyui,jui,jquery easyui,easyui demo,easyui中文'/>
     <meta name="description" content='TopJUI前端框架，基于最新版EasyUI前端框架构建，纯HTML调用功能组件，不用写JS代码的EasyUI，专注你的后端业务开发！'/>
-    <title>贸易订单管理系统</title>
+    <title>贵重物品出入管理系统</title>
     <!-- 浏览器标签图片 -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/topjui/image/favicon.ico"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/bootstrap/css/bootstrap.min.css">

@@ -93,7 +93,7 @@ public class GoodsController {
             throws IOException, FileNotFoundException {
         String imageUrl = "";
         //String ImagePath = request.getSession().getServletContext().getRealPath("/static/img");
-        String ImagePath = ("E:/CCCC/upload/img");
+        String ImagePath = ("C:/CCCC/upload/img");
         File targetfile = new File(ImagePath, file.getOriginalFilename());
         Date date = new Date(System.currentTimeMillis());
         if(targetfile.exists()){
@@ -138,7 +138,7 @@ public class GoodsController {
             goods = goodsService.selectByPrimaryKey(goodsid);
             String s=goods.getPictureurl();
             if (s!=null && s!=""){
-                String s1 = "E:/CCCC"+s;
+                String s1 = "C:/CCCC"+s;
                 File file = new File(s1);
                 file.delete();
             }

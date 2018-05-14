@@ -24,9 +24,9 @@
 <div region="center" fit="true" title="宿管信息展示" >
     <div id="tb">
         <%--以下为查询条件--%>
-        姓名：&emsp;&emsp;<input class="easyui-textbox" name="auntname" id="auntname" style="width:150px;height:32px"/>
-        账号：<input class="easyui-textbox" name="auntno" id="auntno" style="width:150px;height:32px"/>
-        电话号码：<input class="easyui-textbox" name="auntphoneno" id="auntphoneno" style="width:150px;height:32px"/>
+        姓名：&emsp;&emsp;<input class="easyui-textbox" name="auntname" id="auntname" style="width:150px;"/>
+        账号：<input class="easyui-textbox" name="auntno" id="auntno" style="width:150px;"/>
+        电话号码：<input class="easyui-textbox" name="auntphoneno" id="auntphoneno" style="width:150px;"/>
         管理楼号：<input class="easyui-combobox"
                   name="buildingid" id="buildingid"
                   data-options="

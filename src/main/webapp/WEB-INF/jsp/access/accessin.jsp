@@ -26,11 +26,11 @@
         <table id="searchTable">
             <tr>
                 <td>学号或卡号：</td>
-                <td><input class="easyui-textbox" name="sno" id="sno" style="width:150px;height:32px"/></td>
+                <td><input class="easyui-textbox" name="sno" id="sno" style="width:150px;"/></td>
                 <td>姓名：</td>
-                <td><input class="easyui-textbox" name="sname" id="sname" prompt="模糊查询..." style="width:150px;height:32px"/></td>
+                <td><input class="easyui-textbox" name="sname" id="sname" prompt="模糊查询..." style="width:150px;"/></td>
                 <td>物品名称：</td>
-                <td><input class="easyui-textbox" name="goodsname" id="goodsname" prompt="模糊查询..." style="width:150px;height:32px"/></td>
+                <td><input class="easyui-textbox" name="goodsname" id="goodsname" prompt="模糊查询..." style="width:150px;"/></td>
             </tr>
             <tr>
                 <td>楼号：</td>

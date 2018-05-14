@@ -430,7 +430,7 @@
     <div id="center" data-options="region:'center',border:false" style="overflow:hidden;">
         <div id="index_tabs" style="width:100%;height:100%">
             <div title="系统首页" iconCls="fa fa-home" data-options="border:true,
-            content:'<iframe src=\'${pageContext.request.contextPath}/accessin.action\' scrolling=\'auto\' frameborder=\'0\' style=\'width:100%;height:100%;\'></iframe>'"></div>
+            content:'<iframe src=\'index.action\' scrolling=\'auto\' frameborder=\'0\' style=\'width:100%;height:100%;\'></iframe>'"></div>
         </div>
     </div>
 

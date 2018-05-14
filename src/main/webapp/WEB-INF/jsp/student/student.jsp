@@ -27,11 +27,11 @@
         <table>
             <tr>
                 <td>学号：</td>
-                <td><input class="easyui-textbox" prompt="模糊查询..." name="sno" id="sno" style="width:150px;height:32px"/></td>
+                <td><input class="easyui-textbox" prompt="模糊查询..." name="sno" id="sno" style="width:150px;"/></td>
                 <td>校园卡号：</td>
-                <td><input class="easyui-textbox" name="cardno" id="cardno" style="width:150px;height:32px"/></td>
+                <td><input class="easyui-textbox" name="cardno" id="cardno" style="width:150px;"/></td>
                 <td>姓名：</td>
-                <td><input class="easyui-textbox" prompt="模糊查询..." name="sname" id="sname" style="width:150px;height:32px"/></td>
+                <td><input class="easyui-textbox" prompt="模糊查询..." name="sname" id="sname" style="width:150px;"/></td>
             </tr>
             <tr>
                 <td>性别：</td>
@@ -40,9 +40,9 @@
                     <option value="男">男</option>
                     <option value="女">女</option></select></td>
                 <td>电话号码：</td>
-                <td><input class="easyui-textbox" prompt="模糊查询..." name="sphoneno" id="sphoneno" style="width:150px;height:32px"/></td>
+                <td><input class="easyui-textbox" prompt="模糊查询..." name="sphoneno" id="sphoneno" style="width:150px;"/></td>
                 <td>家庭住址：</td>
-                <td><input class="easyui-textbox" prompt="模糊查询..." name="homeadress" id="homeadress" style="width:150px;height:32px"/></td>
+                <td><input class="easyui-textbox" prompt="模糊查询..." name="homeadress" id="homeadress" style="width:150px;"/></td>
             </tr>
             <tr>
                 <td>校区：</td>

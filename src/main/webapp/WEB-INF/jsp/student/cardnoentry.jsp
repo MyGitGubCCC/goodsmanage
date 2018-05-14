@@ -23,7 +23,7 @@
 <body class="easyui-layout">
 <div region="center" fit="true" title="校园卡信息录入" >
     <div id="tb" align="center">
-        学号：<input class="easyui-textbox" name="snoSearch" id="snoSearch" style="width:150px;height:32px"/>
+        学号：<input class="easyui-textbox" name="snoSearch" id="snoSearch" style="width:150px;"/>
         <a href="#" id="findbtn" class="easyui-linkbutton" plain="true" data-options="iconCls:'icon-search'" style="width:80px">查询</a>
         <a href="#" id="delbtn" class="easyui-linkbutton" plain="true" iconCls="icon-cancel" style="width:80px">清除</a>
         <p style="font-size: 30px;color: #6293BB">蓝色标签可修改！！！</p>

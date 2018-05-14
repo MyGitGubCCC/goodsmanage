@@ -38,6 +38,13 @@ public class LoginController {
         mv.setViewName("login/login");
         return mv;
     }
+    //H5首页
+    @RequestMapping(value = "/index.action")
+    public ModelAndView index()throws Exception{
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("main/index2");
+        return mv;
+    }
 
     @RequestMapping(value = "/goodsmanage.action")
     public ModelAndView goodsmanageMain()throws Exception{
