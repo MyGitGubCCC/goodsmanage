@@ -1,5 +1,8 @@
 package com.xzit.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xzit.entity.Aunt;
@@ -35,5 +38,49 @@ public class AuntServiceImpl implements AuntService {
             aunt = list.get(0);
         }
         return aunt;
+    }
+
+    public String insertOrUpdateAunt(Aunt aunt) throws Exception {
+        String msg="异常";
+        int state=0;
+        if (aunt.getAuntno().startsWith("AY")){
+            if (aunt.getAuntid()!=null){
+                try {
+                    state = auntMapper.updateByPrimaryKeySelective(aunt);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                if (state==0) msg = "更新失败！请查看账号是否重复";
+                else msg="更新成功";
+            }else {
+                try {
+                    state = auntMapper.insertSelective(aunt);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                if (state==0) msg = "添加失败,账号重复";
+                else msg="添加成功";
+            }
+        }else {
+            msg="账号请以AY开头";
+        }
+        return msg;
+    }
+
+    public String deleteAuntByAuntid(int auntid) throws Exception {
+        String msg="删除成功！";
+        try {
+            auntMapper.deleteByPrimaryKey(auntid);
+        }catch (Exception e){
+            e.printStackTrace();
+            msg = "删除失败";
+        }
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            msg = mapper.writeValueAsString(msg);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return msg;
     }
 }

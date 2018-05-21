@@ -12,4 +12,6 @@ import java.util.List;
 public interface AuntService {
     PageInfo<Aunt> selectByExample(AuntExample example, Integer pageNo, Integer pageSize)throws Exception;
     Aunt selectByExample(AuntExample example);
+    String insertOrUpdateAunt(Aunt aunt)throws Exception;
+    String deleteAuntByAuntid(int auntid)throws Exception;
 }

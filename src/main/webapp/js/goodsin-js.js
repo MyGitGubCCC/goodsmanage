@@ -105,7 +105,7 @@ $(function (){
                 }
             },
             {
-                field : 'time', title : '带出时间',halign:'center',width : 160,
+                field : 'time', title : '带入时间',halign:'center',width : 160,
             },
             {
                 field : 'remark', title : '备注',halign:'center',width : 200,

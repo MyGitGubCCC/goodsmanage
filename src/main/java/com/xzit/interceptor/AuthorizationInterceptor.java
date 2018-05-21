@@ -29,7 +29,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             }else {
                 System.out.println("AuthorizationInterceptor拦截请求：");
                // httpServletRequest.getRequestDispatcher("/login.action").forward(httpServletRequest,httpServletResponse);
-                httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/login.action");
+               httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/login.action");
 
             }
         }

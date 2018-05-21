@@ -18,6 +18,14 @@ $(function (){
     });
 
     //弹出框关闭事件，清空弹出框呢内容
+    $("#pictureDlg").dialog({
+        onClose: function () {
+            $("#pictureImg").attr('src',"");
+            //光标默认定位到搜索框
+            $('#snoSearch').textbox('textbox').focus();
+        }
+    });
+    //弹出框关闭事件，清空弹出框呢内容
     $("#dlg").dialog({
         onClose: function () {
             $('#fm').form('clear');
@@ -74,7 +82,7 @@ $(function (){
                     "goodsname":row.goodsname,
                     "goodscolor":row.goodscolor});
             }else $.messager.alert("提示", "图片已经上传,并且不允许修改！", "info");
-        } else $.messager.alert("提示", "请选择要的行！", "info");
+        } else $.messager.alert("提示", "请选择上传图片要的行！", "info");
     });
 
     $("#delbtn").click(function(){

@@ -69,7 +69,11 @@ public class GoodsController {
                 String imageUrl = savePicture(file, request);
                 goods.setPictureurl(imageUrl);
             }
-            state = goodsService.updateByPrimaryKeySelective(goods);
+            try {
+                state = goodsService.updateByPrimaryKeySelective(goods);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             if (state==0) msg = "更新失败！请查看编号是否重复";
             else msg="更新成功";
         }else {
@@ -80,7 +84,11 @@ public class GoodsController {
                     String imageUrl = savePicture(file, request);
                     goods.setPictureurl(imageUrl);
                 }
-                state = goodsService.insertSelective(goods);
+                try {
+                    state = goodsService.insertSelective(goods);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
                 if (state==0) msg = "添加失败";
                 else msg="添加成功";
             }else msg="学号不正确";
