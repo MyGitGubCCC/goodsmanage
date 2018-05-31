@@ -110,6 +110,15 @@ public class LoginController {
         response.getWriter().print(obj.toString());
     }
 
+    @RequestMapping(value = "/logout.action")
+    @ResponseBody
+    public String logout(HttpSession httpSession)throws Exception{
+        httpSession.removeAttribute("name");
+        httpSession.removeAttribute("role");
+        httpSession.removeAttribute("number");
+       return "退出成功";
+    }
+
     @RequestMapping(value = "/modifyPasswordInfo.action")
     @ResponseBody
     public Map modifyPasswordInfo(String username,String password)throws Exception{

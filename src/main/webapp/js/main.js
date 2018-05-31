@@ -258,6 +258,13 @@ if ($.cookie('topjuiThemeName')) {
 function logout() {
     $.iMessager.confirm('提示', '确定要退出吗?', function (r) {
         if (r) {
+            $.ajax({
+                url:"logout.action",
+                type:"post",
+                dataType: 'json',
+                success: function (data) {
+                }
+            });
             $.iMessager.progress({
                 text: '正在退出中...'
             });
