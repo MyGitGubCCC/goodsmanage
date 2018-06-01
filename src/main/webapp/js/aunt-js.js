@@ -6,7 +6,7 @@ $(function (){
         var auntno = $("input[name='auntnoSearch']").val();
         var auntphoneno = $("input[name='auntphonenoSearch']").val();
         var buildingid = $("input[name='buildingidSearch']").val();
-
+        $('#auntData').datagrid('clearSelections');
         $('#auntData').datagrid("load", {"auntname":auntname,"auntno":auntno,"auntphoneno":auntphoneno,
             "buildingid":buildingid});
     });

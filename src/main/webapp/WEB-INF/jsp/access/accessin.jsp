@@ -26,7 +26,7 @@
         <table id="searchTable">
             <tr>
                 <td>学号或卡号：</td>
-                <td><input class="easyui-textbox" name="sno" id="sno" style="width:150px;"/></td>
+                <td><input class="easyui-numberbox" name="sno" id="sno" style="width:150px;"/></td>
                 <td>姓名：</td>
                 <td><input class="easyui-textbox" name="sname" id="sname" prompt="模糊查询..." style="width:150px;"/></td>
                 <td>物品名称：</td>
@@ -40,7 +40,8 @@
 					method:'get',
 					valueField:'buildingid',
 					textField:'buildingno',
-					panelHeight:'auto'
+					panelMaxHeight:'600px',
+					editable:false
 			"></td>
                 <td>宿舍号：</td>
                 <td><input class="easyui-combobox" name="dormitoryid" id="dormitoryid" style="width:150px;"
@@ -49,21 +50,22 @@
 					method:'get',
 					valueField:'dormitoryid',
 					textField:'dormitoryno',
-					panelHeight:'auto'
+					panelMaxHeight:'600px',
+					editable:false
 			"></td>
                 <td>出入情况：</td>
-                <td><select class="easyui-combobox" name="inorout" id="inorout" style="width:150px;">
+                <td><select class="easyui-combobox" name="inorout" id="inorout" editable="false" style="width:150px;">
                     <option value="-1">不区分</option>
                     <option value="0">出</option>
                     <option value="1">入</option></select></td>
             </tr>
             <tr>
                 <td>开始时间：</td>
-                <td><input class="easyui-datetimebox" name="starttime" id="starttime"  style="width:150px"></td>
+                <td><input class="easyui-datetimebox" name="starttime" id="starttime" editable="false" style="width:150px"></td>
                 <td>结束时间：</td>
-                <td><input class="easyui-datetimebox" name="endtime" id="endtime"  style="width:150px"></td>
+                <td><input class="easyui-datetimebox" name="endtime" id="endtime" editable="false" style="width:150px"></td>
                 <td>时间排序：</td>
-                <td><select class="easyui-combobox" name="timesort" id="timesort" style="width:150px">
+                <td><select class="easyui-combobox" name="timesort" id="timesort" editable="false" style="width:150px">
                     <option value="0">升序</option>
                     <option value="1">降序</option>
                 </select></td>

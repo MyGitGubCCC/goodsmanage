@@ -3,8 +3,32 @@ $(function (){
     $("#findbtn").click(function () {
         //获取两个输入框的内容
         var sno = $("input[name='snoSearch']").val();
-        $('#ff').form('load', 'selectStudent.action?sno='+sno);
+        if(sno!=null && sno !=""){
+            $.ajax({
+                url:"selectStudent.action",
+                type:"post",
+                data: {
+                    "sno": sno
+                },
+                dataType: 'json',
+                success:function (data) {
+                    $('#ff').form('load', data);
+                },error : function() {
+                    $.messager.alert('提示消息','学号输入错误！');
+                },
+            })
+        }else{
+            $.messager.alert('提示消息','请先输入学号');
+        }
     });
+
+    //输入框回车事件
+    $('#snoSearch').textbox('textbox').keydown(function (e) {
+        if (e.keyCode == 13) {
+            $("#findbtn").click();
+        }
+    });
+
     //清除查询框内容
     $("#delbtn").click(function(){
         $("#snoSearch").textbox('setValue','');

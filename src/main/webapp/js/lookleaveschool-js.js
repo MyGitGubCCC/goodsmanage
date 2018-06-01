@@ -13,6 +13,7 @@ $(function (){
          var backendtime= $("input[name='backendtime']").val();
          var notBackSchool = $('#notBackSchool').val();
          var timesort = $('#timesort').val();
+         $('#lookleaveSchoolData').datagrid('clearSelections');
      $('#lookleaveSchoolData').datagrid("load", {"sno":sno,"buildingid":buildingid,"dormitoryid":dormitoryid,
      "sname":sname,"leavestarttime":leavestarttime,"leaveendtime":leaveendtime,
      "homeadress":homeadress,"backstarttime":backstarttime,"backendtime":backendtime,"notbackschool":notBackSchool,"timesort":timesort});

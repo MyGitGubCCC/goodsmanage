@@ -27,9 +27,9 @@
         <table id="searchTable">
             <tr>
                 <td>学号：</td>
-                <td><input class="easyui-textbox" prompt="模糊查询..." name="sno" id="sno" style="width:150px;"/></td>
+                <td><input class="easyui-numberbox" prompt="模糊查询..." name="sno" id="sno" style="width:150px;"/></td>
                 <td>校园卡号：</td>
-                <td><input class="easyui-textbox" name="cardno" id="cardno" style="width:150px;"/></td>
+                <td><input class="easyui-numberbox" name="cardno" id="cardno" style="width:150px;"/></td>
                 <td>姓名：</td>
                 <td><input class="easyui-textbox" prompt="模糊查询..." name="sname" id="sname" style="width:150px;"/></td>
             </tr>
@@ -40,7 +40,7 @@
                     <option value="男">男</option>
                     <option value="女">女</option></select></td>
                 <td>电话号码：</td>
-                <td><input class="easyui-textbox" prompt="模糊查询..." name="sphoneno" id="sphoneno" style="width:150px;"/></td>
+                <td><input class="easyui-numberbox" prompt="模糊查询..." name="sphoneno" id="sphoneno" style="width:150px;"/></td>
                 <td>家庭住址：</td>
                 <td><input class="easyui-textbox" prompt="模糊查询..." name="homeadress" id="homeadress" style="width:150px;"/></td>
             </tr>
@@ -54,31 +54,34 @@
 					method:'get',
 					valueField:'campusid',
 					textField:'campusname',
-					panelHeight:'auto',
+					panelMaxHeight:'600px',
+					editable:false,
 					onSelect: function(rec){
                         var url = 'selectAcademyByCampusid.action?campusid='+rec.campusid;
                         $('#academyid').combobox('reload', url);
                     }
                     "></td>
                 <td>学院：</td>
-                <td><input class="easyui-combobox" name="academyid" id="academyid" style="width:150px;"
+                <td><input class="easyui-combobox" name="academyid" prompt="请先选择校区" id="academyid" style="width:150px;"
                                  data-options="
 					method:'get',
 					valueField:'academyid',
 					textField:'academyname',
-					panelHeight:'auto',
+					panelMaxHeight:'600px',
+					editable:false,
 					onSelect: function(rec){
                         var url = 'selectClassinfoByAcademyid.action?academyid='+rec.academyid;
                         $('#classid').combobox('reload', url);
                     }
 			"></td>
                 <td>班级：</td>
-                <td><input class="easyui-combobox" name="classid" id="classid" style="width:150px;"
+                <td><input class="easyui-combobox" prompt="请先选择校区" name="classid" id="classid" style="width:150px;"
                            data-options="
 					method:'get',
 					valueField:'classid',
 					textField:'classname',
-					panelHeight:'auto'
+					panelMaxHeight:'600px',
+					editable:false,
 			"></td>
             </tr>
             <tr>
@@ -89,7 +92,8 @@
 					method:'get',
 					valueField:'buildingid',
 					textField:'buildingno',
-					panelHeight:'auto'
+					panelMaxHeight:'600px',
+					editable:false,
 			"></td>
                 <td>宿舍号：</td>
                 <td><input class="easyui-combobox" name="dormitoryid" id="dormitoryid" style="width:150px;"
@@ -98,10 +102,11 @@
 					method:'get',
 					valueField:'dormitoryid',
 					textField:'dormitoryno',
-					panelHeight:'auto'
+					panelMaxHeight:'600px',
+					editable:false,
 			"></td>
                 <td>床位号：</td>
-                <td><select class="easyui-combobox" name="bedno" id="bedno" style="width:150px;">
+                <td><select class="easyui-combobox" name="bedno" editable="false" id="bedno" style="width:150px;">
                     <option value="">不区分</option>
                     <option value="1">1</option>
                     <option value="2">2</option>

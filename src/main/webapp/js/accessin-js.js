@@ -11,6 +11,8 @@ $(function (){
         var starttime = $("input[name='starttime']").val();
         var endtime = $("input[name='endtime']").val();
         var timesort = $('#timesort').val();
+        //清除所有勾选项
+        $('#datagriddata').datagrid('clearChecked');
         $('#datagriddata').datagrid("load", {"sno":sno,"sname":sname,"goodsname":goodsname,
             "buildingid":buildingid,"dormitoryid":dormitoryid,"inorout":inorout,
             "starttime":starttime,"endtime":endtime,"timesort":timesort});

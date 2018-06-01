@@ -27,9 +27,9 @@
         <table id="searchTable">
             <tr>
                 <td>
-                    姓名：<input class="easyui-textbox" name="auntnameSearch" id="auntnameSearch" style="width:150px;"/>
-                    账号：<input class="easyui-textbox" name="auntnoSearch" id="auntnoSearch" style="width:150px;"/>
-                    电话号码：<input class="easyui-textbox" name="auntphonenoSearch" id="auntphonenoSearch" style="width:150px;"/>
+                    姓名：<input class="easyui-textbox" prompt="模糊查询..." name="auntnameSearch" id="auntnameSearch" style="width:150px;"/>
+                    账号：<input class="easyui-textbox" prompt="模糊查询..." name="auntnoSearch" id="auntnoSearch" style="width:150px;"/>
+                    电话号码：<input class="easyui-numberbox" prompt="模糊查询..." name="auntphonenoSearch" id="auntphonenoSearch" style="width:150px;"/>
                     管理楼号：<input class="easyui-combobox"
                                 name="buildingidSearch" id="buildingidSearch"
                                 data-options="
@@ -37,7 +37,8 @@
 					method:'get',
 					valueField:'buildingid',
 					textField:'buildingno',
-					panelHeight:'auto'
+					panelMaxHeight:'600px',
+					editable:false
 			">
                 </td>
             </tr>
@@ -94,8 +95,9 @@
 					method:'get',
 					valueField:'buildingid',
 					textField:'buildingno',
-					panelHeight:'auto',
-					required:true
+					panelMaxHeight:'600px',
+					required:true,
+					editable:false
 			      ">
                 </td>
             </tr>

@@ -23,7 +23,7 @@
 <body class="easyui-layout">
 <div region="center" fit="true" title="物品外出记录" >
     <div id="tb">
-        学号或卡号：<input class="easyui-textbox" name="snoSearch" id="snoSearch" style="width:150px;"/>
+        学号或卡号：<input class="easyui-numberbox" name="snoSearch" id="snoSearch" style="width:150px;"/>
         <a href="#" id="addbtn" class="easyui-linkbutton" plain="true" iconCls="icon-add" style="width:80px">添加</a>
         <%--  <a href="#" id="findbtn" class="easyui-linkbutton" plain="true" data-options="iconCls:'icon-search'" style="width:80px">查询</a>--%>
         <a href="#" id="delbtn" class="easyui-linkbutton" plain="true" iconCls="icon-cancel" style="width:80px">清除</a>
@@ -46,20 +46,20 @@
             <tr>
                 <td >姓名：</td>
                 <td>
-                    <input class="easyui-textbox"  name="sname" id="sname" value=""/>
+                    <input class="easyui-textbox" readonly="readonly" name="sname" id="sname" value=""/>
                 </td>
                 </td>
             </tr>
             <tr>
                 <td >学号：</td>
                 <td>
-                    <input class="easyui-textbox"  name="sno" id="sno" value=""/>
+                    <input class="easyui-textbox" readonly="readonly" name="sno" id="sno" value=""/>
                 </td>
             </tr>
             <tr>
                 <td >宿舍号：</td>
                 <td>
-                    <input class="easyui-textbox"  name="bandd" id="bandd" value=""/>
+                    <input class="easyui-textbox" readonly="readonly" name="bandd" id="bandd" value=""/>
                 </td>
             </tr>
             <tr>

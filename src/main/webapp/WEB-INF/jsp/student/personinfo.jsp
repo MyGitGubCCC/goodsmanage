@@ -42,11 +42,11 @@
                         </tr>
                         <tr>
                             <td>学号:</td>
-                            <td><input class="easyui-textbox" type="text" name="sno" data-options="readonly:true"></td>
+                            <td><input class="easyui-numberbox" type="text" name="sno" data-options="readonly:true"></td>
                         </tr>
                         <tr>
                             <td>校园卡号:</td>
-                            <td><input class="easyui-textbox" type="text" name="cardno" data-options="readonly:true"/></td>
+                            <td><input class="easyui-numberbox" type="text" name="cardno" data-options="readonly:true"/></td>
                         </tr>
                         <tr>
                             <td>性别:</td>
@@ -54,11 +54,11 @@
                         </tr>
                         <tr>
                             <td><p style="color: #6293BB;font-weight:bold">电话:</p></td>
-                            <td><input class="easyui-textbox" type="text" name="sphoneno" data-options="required:true"></td>
+                            <td><input class="easyui-numberbox" type="text" name="sphoneno" data-options="required:true"></td>
                         </tr>
                         <tr>
                             <td><p style="color: #6293BB;font-weight:bold">QQ:</p></td>
-                            <td><input class="easyui-textbox" type="text" name="qq" data-options="required:true"></td>
+                            <td><input class="easyui-numberbox" type="text" name="qq" data-options="required:true"></td>
                         </tr>
                         <tr>
                             <td>班级:</td>

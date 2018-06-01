@@ -26,7 +26,7 @@
         <table id="searchTable">
             <tr>
                 <td>学号或卡号：</td>
-                <td><input class="easyui-textbox" name="sno" id="sno" style="width:150px"/></td>
+                <td><input class="easyui-numberbox" name="sno" id="sno" style="width:150px"/></td>
                 <td>楼号：</td>
                 <td><input class="easyui-combobox" name="buildingid" id="buildingid"style="width:150px;"
                            data-options="
@@ -34,7 +34,8 @@
 					method:'get',
 					valueField:'buildingid',
 					textField:'buildingno',
-					panelHeight:'auto'
+					panelHeight:'600px',
+					editable:false
 			"></td>
                 <td>宿舍号：</td>
                 <td><input class="easyui-combobox" name="dormitoryid" id="dormitoryid" style="width:150px;"
@@ -43,33 +44,34 @@
 					method:'get',
 					valueField:'dormitoryid',
 					textField:'dormitoryno',
-					panelHeight:'auto'
+					panelHeight:'600px',
+					editable:false
 			"></td>
             </tr>
             <tr>
             <td>姓名：</td>
             <td><input class="easyui-textbox" name="sname" id="sname" prompt="模糊查询..." style="width:150px;"/></td>
             <td>离校开始时间：</td>
-            <td><input class="easyui-datetimebox" name="leavestarttime" id="leavestarttime"  style="width:150px"></td>
+            <td><input class="easyui-datetimebox" name="leavestarttime" editable="false" id="leavestarttime"  style="width:150px"></td>
             <td>离校结束时间：</td>
-            <td><input class="easyui-datetimebox" name="leaveendtime" id="leaveendtime"  style="width:150px"></td>
+            <td><input class="easyui-datetimebox" name="leaveendtime" editable="false" id="leaveendtime"  style="width:150px"></td>
         </tr>
             <tr>
                 <td>家庭住址：</td>
                 <td><input class="easyui-textbox" name="homeadress" id="homeadress" prompt="模糊查询..." style="width:150px;"/></td>
                 <td>返校开始时间：</td>
-                <td><input class="easyui-datetimebox" name="backstarttime" id="backstarttime"  style="width:150px"></td>
+                <td><input class="easyui-datetimebox" name="backstarttime" editable="false" id="backstarttime"  style="width:150px"></td>
                 <td>返校结束时间：</td>
-                <td><input class="easyui-datetimebox" name="backendtime" id="backendtime"  style="width:150px"></td>
+                <td><input class="easyui-datetimebox" name="backendtime" editable="false" id="backendtime"  style="width:150px"></td>
             </tr>
             <tr>
                 <td>是否返校：</td>
-                <td><select class="easyui-combobox" name="notBackSchool" id="notBackSchool" style="width:150px">
+                <td><select class="easyui-combobox" name="notBackSchool" editable="false" id="notBackSchool" style="width:150px">
                     <option value="0">全部</option>
                     <option value="1">未返校</option>
                 </select></td>
                 <td>时间排序：</td>
-                <td><select class="easyui-combobox" name="timesort" id="timesort" style="width:150px">
+                <td><select class="easyui-combobox" name="timesort" editable="false" id="timesort" style="width:150px">
                     <option value="0">升序</option>
                     <option value="1">降序</option>
                 </select></td>

@@ -3,8 +3,10 @@ $(function (){
     $("#findbtn").click(function () {
         //获取两个输入框的内容
         var sno = $("input[name='snoSearch']").val();
+        $('#goodsData').datagrid('clearSelections');
         $('#goodsData').datagrid("load", {"sno":sno});
     });
+
     //清除查询框内容
     $("#clearbtn").click(function(){
         $("#snoSearch").textbox('setValue','');

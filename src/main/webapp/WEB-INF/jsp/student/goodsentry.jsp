@@ -25,7 +25,7 @@
     <div id="tb">
         <c:set value="${role}" var="role" property=""/>
         <c:if test="${role != '学生'}">
-            学号或卡号：<input class="easyui-textbox" name="snoSearch" id="snoSearch" style="width:150px;"/>
+            学号或卡号：<input class="easyui-numberbox" name="snoSearch" id="snoSearch" style="width:150px;"/>
             <a href="#" id="findbtn" class="easyui-linkbutton" plain="true" data-options="iconCls:'icon-search'" style="width:80px">查询</a>
             <a href="#" id="clearbtn" class="easyui-linkbutton" plain="true" iconCls="icon-cancel" style="width:80px">清除</a>
             <a href="#" id="addbtn" class="easyui-linkbutton" plain="true" iconCls="icon-add" style="width:80px">添加</a>
@@ -53,7 +53,7 @@
             <tr id="snotr">
                 <td >学号或卡号：</td>
                 <td>
-                    <input class="easyui-textbox"  name="sno" id="sno" data-options="required:true" value=""/>
+                    <input class="easyui-numberbox"  name="sno" id="sno" data-options="required:true" value=""/>
                 </td>
             </tr>
             <tr>

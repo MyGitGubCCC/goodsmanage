@@ -158,9 +158,25 @@ function closeDialog() {
 function addgoods() {
     //获取输入框的内容
     var snoSearch = $("input[name='snoSearch']").val();
-    $('#fm').form('load', 'selectStudent.action?sno='+snoSearch);
-    //清空搜索框
-    $("#snoSearch").textbox('setValue','');
-    $('#dlg').dialog('open').dialog('setTitle','添加离校返校记录');
+    if(snoSearch!=null && snoSearch !=""){
+        $.ajax({
+            url:"selectStudent.action",
+            type:"post",
+            data: {
+                "sno": snoSearch
+            },
+            dataType: 'json',
+            success:function (data) {
+                $('#fm').form('load', data);
+                //清空搜索框
+                $("#snoSearch").textbox('setValue','');
+                $('#dlg').dialog('open').dialog('setTitle','添加离校返校记录');
+            },error : function() {
+                $.messager.alert('提示消息','学号输入错误！');
+            },
+        })
+    }else{
+        $.messager.alert('提示消息','请先输入学号');
+    }
 }
 

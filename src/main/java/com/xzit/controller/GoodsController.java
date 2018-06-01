@@ -91,7 +91,7 @@ public class GoodsController {
                 }
                 if (state==0) msg = "添加失败";
                 else msg="添加成功";
-            }else msg="学号不正确";
+            }else msg="添加失败！学号不正确";
         }
 
         JSONObject obj = new JSONObject();

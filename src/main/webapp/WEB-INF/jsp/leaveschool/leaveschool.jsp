@@ -23,7 +23,7 @@
 <body class="easyui-layout">
 <div region="center" fit="true" title="离校管理" >
     <div id="tb">
-        学号或卡号：<input class="easyui-textbox" prompt="输入学号添加" name="snoSearch" id="snoSearch" style="width:150px;"/>
+        学号或卡号：<input class="easyui-numberbox" prompt="输入学号添加" name="snoSearch" id="snoSearch" style="width:150px;"/>
         <a href="#" id="addbtn" class="easyui-linkbutton" plain="true" iconCls="icon-add" style="width:80px">添加</a>
       <%--  <a href="#" id="findbtn" class="easyui-linkbutton" plain="true" data-options="iconCls:'icon-search'" style="width:80px">查询</a>--%>
         <a href="#" id="delbtn" class="easyui-linkbutton" plain="true" iconCls="icon-cancel" style="width:80px">清除</a>

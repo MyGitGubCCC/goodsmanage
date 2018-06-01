@@ -23,7 +23,7 @@
 <body class="easyui-layout">
 <div region="center" fit="true" title="校园卡信息录入" >
     <div id="tb" align="center">
-        学号：<input class="easyui-textbox" name="snoSearch" id="snoSearch" style="width:150px;"/>
+        学号：<input class="easyui-numberbox" name="snoSearch" id="snoSearch" style="width:150px;"/>
         <a href="#" id="findbtn" class="easyui-linkbutton" plain="true" data-options="iconCls:'icon-search'" style="width:80px">查询</a>
         <a href="#" id="delbtn" class="easyui-linkbutton" plain="true" iconCls="icon-cancel" style="width:80px">清除</a>
         <p style="font-size: 30px;color: #6293BB">蓝色标签可修改！！！</p>
@@ -45,7 +45,7 @@
                         </tr>
                         <tr>
                             <td><p style="color: #6293BB;font-weight:bold">校园卡号:</p></td>
-                            <td><input class="easyui-textbox" type="text" name="cardno" data-options="required:true"/></td>
+                            <td><input class="easyui-numberbox" type="text" name="cardno" data-options="required:true"/></td>
                         </tr>
                         <tr>
                             <td>性别:</td>
@@ -76,7 +76,8 @@
 					                            method:'get',
 					                        valueField:'buildingid',
 				                              textField:'buildingno',
-					                        panelHeight:'auto',
+					                        panelMaxHeight:'600px',
+					                        editable:false,
 					                        required:true"></td>
                         </tr>
                         <tr>
@@ -87,13 +88,14 @@
 					                            method:'get',
 					                        valueField:'dormitoryid',
 				                              textField:'dormitoryno',
-					                        panelHeight:'auto',
+					                        panelMaxHeight:'600px',
+					                        editable:false,
 					                        required:true
 			                                  "></td>
                         </tr>
                         <tr>
                             <td><p style="color: #6293BB;font-weight:bold">床位号:</p></td>
-                            <td><select class="easyui-combobox" name="bedno" style="width:146px;">
+                            <td><select class="easyui-combobox" editable="false" name="bedno" style="width:146px;">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>

@@ -159,43 +159,59 @@ function closeDialog() {
 function addgoods() {
     //获取输入框的内容
     var snoSearch = $("input[name='snoSearch']").val();
-    $('#fm').form('load', 'selectStudent.action?sno='+snoSearch);
-    $('#goodsid').combobox({
-        url:'selectGoodsListBySno.action?sno='+snoSearch,
-        valueField:'goodsid',
-        textField:'goodsname',
-        editable:false,
-        onSelect:function (rec) {
-            $.ajax({
-                url:"lookGoodsPicture.action",
-                type:"post",
-                data: {
-                    "goodsid": rec.goodsid
-                },
-                dataType: 'json',
-                success:function (data) {
-                    if (data!=null && data!=""){
-                        $("#pictureImg").attr('src',data);
-                        /* $.messager.show({
-                         title:'提示消息',
-                         msg:data,
-                         showType:'show'
-                         });*/
-                    }else{
-                        $.messager.show({
-                            title:'提示消息',
-                            msg:"暂无图片！请到信息录入模块添加图片。",
-                            showType:'show'
-                        });
-                    }
+    if(snoSearch!=null && snoSearch !=""){
+        $.ajax({
+            url:"selectStudent.action",
+            type:"post",
+            data: {
+                "sno": snoSearch
+            },
+            dataType: 'json',
+            success:function (data) {
+                $('#fm').form('load', data);
+                $('#goodsid').combobox({
+                    url:'selectGoodsListBySno.action?sno='+snoSearch,
+                    valueField:'goodsid',
+                    textField:'goodsname',
+                    editable:false,
+                    onSelect:function (rec) {
+                        $.ajax({
+                            url:"lookGoodsPicture.action",
+                            type:"post",
+                            data: {
+                                "goodsid": rec.goodsid
+                            },
+                            dataType: 'json',
+                            success:function (data) {
+                                if (data!=null && data!=""){
+                                    $("#pictureImg").attr('src',data);
+                                    /* $.messager.show({
+                                     title:'提示消息',
+                                     msg:data,
+                                     showType:'show'
+                                     });*/
+                                }else{
+                                    $.messager.show({
+                                        title:'提示消息',
+                                        msg:"暂无图片！请到信息录入模块添加图片。",
+                                        showType:'show'
+                                    });
+                                }
 
-                }
-            })
-        }
-    });
-    $("#pictureImg").attr('src',"/upload/img/noPicture.jpg");
-    //清空搜索框
-    $("#snoSearch").textbox('setValue','');
-    $('#dlg').dialog('open').dialog('setTitle','添加物品外出记录');
+                            }
+                        })
+                    }
+                });
+                $("#pictureImg").attr('src',"/upload/img/noPicture.jpg");
+                //清空搜索框
+                $("#snoSearch").textbox('setValue','');
+                $('#dlg').dialog('open').dialog('setTitle','添加物品外出记录');
+            },error : function() {
+                $.messager.alert('提示消息','学号输入错误！');
+            },
+        })
+    }else{
+        $.messager.alert('提示消息','请先输入学号');
+    }
 }
 
