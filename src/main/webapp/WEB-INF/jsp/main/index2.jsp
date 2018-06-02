@@ -4,13 +4,12 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>HTML5/CSS3实现四季更替过渡动画DEMO演示</title>
+  <title>首页</title>
       <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
 </head>
 
 <body>
 
-  
 <div class="container">
   <div class="season"></div>
   <div class="sun"></div>
@@ -910,8 +909,6 @@
   </div>
 </div>
 
-    <script  src="${pageContext.request.contextPath}/js/index.js"></script>
-
+    <script src="${pageContext.request.contextPath}/js/index.js"></script>
 </body>
-
 </html>

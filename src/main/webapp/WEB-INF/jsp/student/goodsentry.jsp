@@ -145,6 +145,7 @@
                 alert("仅支持"+allowExtention+"为后缀名的文件!");
                 //fileObj.value="";//清空选中文件
                 $('#file_upload').filebox('clear');
+                $("#Img").attr('src','/upload/img/noPicture.jpg');
                 if(browserVersion.indexOf("MSIE")>-1){
                     fileObj.select();
                     document.selection.clear();

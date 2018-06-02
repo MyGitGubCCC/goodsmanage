@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/topjui/image/favicon.ico"/>
     <!-- TopJUI框架样式 -->
     <link type="text/css" href="${pageContext.request.contextPath}/topjui/css/topjui.core.min.css" rel="stylesheet">
-    <link type="text/css" href="${pageContext.request.contextPath}/topjui/themes/default/topjui.red.css" rel="stylesheet" id="dynamicTheme"/>
+    <link type="text/css" href="${pageContext.request.contextPath}/topjui/themes/default/topjui.blue.css" rel="stylesheet" id="dynamicTheme"/>
     <!-- FontAwesome字体图标 -->
     <link type="text/css" href="${pageContext.request.contextPath}/static/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
     <!-- jQuery相关引用 -->

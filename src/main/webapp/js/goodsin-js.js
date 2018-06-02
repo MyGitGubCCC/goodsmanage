@@ -191,6 +191,7 @@ function addgoods() {
                                      showType:'show'
                                      });*/
                                 }else{
+                                    $("#pictureImg").attr('src','/upload/img/noPicture.jpg');
                                     $.messager.show({
                                         title:'提示消息',
                                         msg:"暂无图片！请到信息录入模块添加图片。",
