@@ -108,12 +108,25 @@ public class StudentController {
         String msg="异常";
         int state=0;
         if (student.getSid()!=null){
-            try {
-                state = studentService.updateByPrimaryKeySelective(student);
-            }catch (Exception e){
-
+            //查询床位号是否重复
+            StudentExample studentExample = new StudentExample();
+            StudentExample.Criteria criteria = studentExample.createCriteria();
+            criteria.andBednoEqualTo(student.getBedno());
+            criteria.andBuildingidEqualTo(student.getBuildingid());
+            criteria.andDormitoryidEqualTo(student.getDormitoryid());
+            Student student1 = studentService.selectByExample(studentExample);
+            if (student1!=null){
+                //床位有人，状态置2
+                state = 2;
+            }else {
+                try {
+                    state = studentService.updateByPrimaryKeySelective(student);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
-            if (state==0) msg = "更新失败！请查看卡号是否重复";
+            if (state==0) msg = "更新失败！学生校园卡号重复";
+            else if (state==2) msg = "更新失败！该宿舍床位号重复";
             else msg="更新成功";
         }else msg="更新失败，请填写数据";
         JSONObject obj = new JSONObject();
