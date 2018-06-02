@@ -38,31 +38,31 @@
                         <input class="easyui-textbox" type="hidden" name="sid" >
                         <tr>
                             <td>姓名:</td>
-                            <td><input class="easyui-textbox" type="text" name="sname" data-options="readonly:true"></td>
+                            <td><input class="easyui-textbox" type="text" style="width:147px;" name="sname" data-options="readonly:true"></td>
                         </tr>
                         <tr>
                             <td>学号:</td>
-                            <td><input class="easyui-numberbox" type="text" name="sno" data-options="readonly:true"></td>
+                            <td><input class="easyui-numberbox" type="text" style="width:147px;" name="sno" data-options="readonly:true"></td>
                         </tr>
                         <tr>
                             <td>校园卡号:</td>
-                            <td><input class="easyui-numberbox" type="text" name="cardno" data-options="readonly:true"/></td>
+                            <td><input class="easyui-numberbox" type="text" style="width:147px;" name="cardno" data-options="readonly:true"/></td>
                         </tr>
                         <tr>
                             <td>性别:</td>
-                            <td><input class="easyui-textbox" type="text" name="ssex" data-options="readonly:true"></td>
+                            <td><input class="easyui-textbox" type="text" style="width:147px;" name="ssex" data-options="readonly:true"></td>
                         </tr>
                         <tr>
                             <td><p style="color: #6293BB;font-weight:bold">电话:</p></td>
-                            <td><input class="easyui-numberbox" type="text" name="sphoneno" data-options="required:true"></td>
+                            <td><input class="easyui-numberbox" style="width:147px;" type="text" name="sphoneno" data-options="required:true"></td>
                         </tr>
                         <tr>
                             <td><p style="color: #6293BB;font-weight:bold">QQ:</p></td>
-                            <td><input class="easyui-numberbox" type="text" name="qq" data-options="required:true"></td>
+                            <td><input class="easyui-numberbox" style="width:147px;" type="text" name="qq" data-options="required:true"></td>
                         </tr>
                         <tr>
                             <td>班级:</td>
-                            <td><input class="easyui-combobox"  name="classid"  data-options="url:'selectAllClassinfo.action',
+                            <td><input class="easyui-combobox" style="width:147px;" name="classid"  data-options="url:'selectAllClassinfo.action',
 					                            method:'get',
 					                        valueField:'classid',
 				                              textField:'classname',
@@ -73,7 +73,7 @@
                         </tr>
                         <tr>
                             <td>楼号:</td>
-                            <td><input class="easyui-combobox" name="buildingid" data-options="url:'selectAllBuilding.action',
+                            <td><input class="easyui-combobox" style="width:147px;" name="buildingid" data-options="url:'selectAllBuilding.action',
 					                            method:'get',
 					                        valueField:'buildingid',
 				                              textField:'buildingno',
@@ -83,7 +83,7 @@
                         <tr>
                             <td>宿舍号:</td>
                             <td><input class="easyui-combobox"
-                                       name="dormitoryid"
+                                       name="dormitoryid" style="width:147px;"
                                        data-options="url:'selectAllDormitory.action',
 					                            method:'get',
 					                        valueField:'dormitoryid',
@@ -104,7 +104,7 @@
                         </tr>
                         <tr>
                             <td><p style="color: #6293BB;font-weight:bold">家庭住址:</p></td>
-                            <td><input class="easyui-textbox" name="homeadress" data-options="multiline:true,required:true" style="height:60px"></td>
+                            <td><input class="easyui-textbox" name="homeadress" data-options="multiline:true,required:true" style="width:147px;height:60px"></td>
                         </tr>
                     </table>
                 </form>
